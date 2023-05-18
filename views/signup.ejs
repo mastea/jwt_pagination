@@ -1,0 +1,57 @@
+<%- include('partials/header'); -%>
+
+<div class="row justify-content-center align-items-center h-100">
+  <div class="col col-sm-8 col-md-6 col-lg-4 col-xl-4">
+    <div class="form-outline mb-4">
+      <h4>Зарегистрироваться</h4>
+    </div>
+    <form>
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="email">Email адрес</label>
+        <input class="form-control" type="text" name="email" required />
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="password">Пароль</label>
+        <input class="form-control" type="password" name="password" required />
+      </div>
+
+      <div class="sign-container">
+        <!-- Submit button -->
+        <button class="btn btn-primary btn-block mb-4">Зарегистрироваться</button>
+        <div class="sign-text">
+          <a href="/login">Войти</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+    try {
+      const res = await fetch("/signup", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if (data.user) location.assign('/');
+
+    } catch (err) {
+      console.log(err);
+    }
+  });
+</script>
+
+<%- include('partials/footer'); -%>

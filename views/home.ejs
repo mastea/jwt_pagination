@@ -1,0 +1,48 @@
+<%- include('partials/header'); -%>
+
+<h4>Главная страница</h4>
+
+<% (blogs.docs).forEach(blog => { %>
+<div class="card">
+  <div class="card-body">
+    <h2><%= blog.title %></h2>
+    <b><%= blog.author %></b>
+    <i><%= blog.date %></i>
+    <p><%= blog.content %></p>
+  </div>
+</div>
+<% }); %>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item <% if (!blogs.hasPrevPage) { %> disabled <% } %>"><a class="page-link" href="/?p=<%= blogs.prevPage %>">Previous</a></li>
+
+    <% for (let i=1; i<=blogs.totalPages; i++) { %>
+      <li class="page-item <% if (blogs.page == i) { %> active <% } %>"><a class="page-link" href="/?p=<%= i %>"><%= i %></a></li>
+    <% } %>
+
+    <li class="page-item <% if (!blogs.hasNextPage) { %> disabled <% } %>"><a class="page-link" href="/?p=<%= blogs.nextPage %>">Next</a></li>
+  </ul>
+</nav>
+
+<%- include('partials/footer'); -%>
+
+
+
+
+
+
+<!-- это то что возвращае нам объект blogs -->
+<!-- {
+  docs [],
+  totalDocs: 25,
+  offset: 15,
+  limit: 3,
+  totalPages: 9,
+  page: 6,
+  pagingCounter: 16,
+  hasPrevPage: true,
+  hasNextPage: true,
+  prevPage: 5,
+  nextPage: 7
+} -->

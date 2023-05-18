@@ -1,0 +1,23 @@
+
+.navbar {
+    padding: 8px 20px 8px;
+    margin-bottom: 20px;
+}
+.navbar-nav {
+    margin-left: auto;
+}
+.user {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.card {
+    margin-bottom: 20px;
+}
+.sign-container {
+    display: flex;
+    align-items: center;
+}
+.sign-text {
+    margin-left: auto;
+}

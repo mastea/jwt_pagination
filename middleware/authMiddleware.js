@@ -9,7 +9,7 @@ const verifyAuth = (req, res, next) => {
                 console.log(err);
                 res.redirect('/login');
             } else {
-                console.log(decoded);
+                // console.log(decoded);
                 next();
             }
         });

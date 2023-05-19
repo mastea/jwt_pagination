@@ -3,14 +3,13 @@
 <h4>Главная страница</h4>
 
 <% (blogs.docs).forEach(blog => { %>
-<div class="card">
-  <div class="card-body">
-    <h2><%= blog.title %></h2>
-    <b><%= blog.author %></b>
-    <i><%= blog.date %></i>
-    <p><%= blog.content %></p>
-  </div>
-</div>
+
+  <h2><%= blog.title %></h2>
+  <b><%= blog.author %></b>
+  <i><%= blog.date %></i>
+  <p><%= blog.content %></p>
+  <hr>
+
 <% }); %>
 
 <nav aria-label="Page navigation example">

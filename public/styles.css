@@ -1,23 +1,39 @@
-
 .navbar {
-    padding: 8px 20px 8px;
-    margin-bottom: 20px;
+  padding: 8px 20px 8px;
+  margin-bottom: 20px;
 }
 .navbar-nav {
-    margin-left: auto;
+  margin-left: auto;
 }
 .user {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
 }
-.card {
-    margin-bottom: 20px;
+hr {
+  border-width: 0 0 5px;
+  border-style: solid;
+  border-color: #d1d1d1;
+  width: 30%;
+  margin: 20px 35% 20px 35%;
+}
+.dashboard-title {
+  display: flex;
+}
+.dashboard-title .btn {
+  margin-left: auto;
+}
+table.dashboard {
+  width: 80%;
+  margin: 0 10% 0;
+}
+table.dashboard td:nth-child(2) {
+  width: 200px;
 }
 .sign-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .sign-text {
-    margin-left: auto;
+  margin-left: auto;
 }

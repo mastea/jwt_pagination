@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes.js');
 const homeRoutes = require('./routes/homeRoutes.js');
+const dashboardRoutes = require('./routes/dashboardRoutes.js');
 const { verifyAuth, checkUser } = require('./middleware/authMiddleware.js');
 
 const mongoose = require('mongoose');
@@ -24,7 +25,7 @@ app.listen(port, (err)=>{
 app.get('*', checkUser);
 app.use(authRoutes);
 app.use(homeRoutes);
-
+app.use(dashboardRoutes);
 
 
 // нужно менять input type из text в email на
@@ -32,3 +33,4 @@ app.use(homeRoutes);
 // нужно добавить http status code для каждого res.status()
 // нужно сделать обработчик ошибок, который выведет
 //  информативное сообщение при неправильном.
+// нужно добавить файл .dotenv

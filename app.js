@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes.js');
 const homeRoutes = require('./routes/homeRoutes.js');
 const dashboardRoutes = require('./routes/dashboardRoutes.js');
-const { verifyAuth, checkUser } = require('./middleware/authMiddleware.js');
+const { checkUser } = require('./middleware/authMiddleware.js');
 
 const mongoose = require('mongoose');
 const db = require('./dbconnect');

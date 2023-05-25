@@ -2,15 +2,41 @@
 
 <h4>Добавить новый блог</h4>
 <form>
-    <div class="form-group">
-        <label class="form-label">Загаловок</label>
-        <input class="form-control" type="text" name="postTitle">
-    </div>
-    <div class="form-group">
-        <label class="form-label">Post</label>
-        <textarea class="form-control" name="postBody" cols="30" rows="10"></textarea>
-    </div>
-    <button class="btn btn-primary">Добавить</button>
+  <div class="form-group">
+    <label class="form-label">Загаловок</label>
+    <input class="form-control" type="text" name="postTitle" />
+  </div>
+  <div class="form-group">
+    <label class="form-label">Содержание</label>
+    <textarea class="form-control" name="postContent" cols="30" rows="10"></textarea>
+  </div>
+  <button class="btn btn-primary">Добавить</button>
 </form>
+
+<script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const title = form.postTitle.value;
+    const content = form.postContent.value;
+    const author = '<%- user.email %>';
+
+    try {
+      const res = await fetch("/addnew", {
+        method: "POST",
+        body: JSON.stringify({ title, content, author }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await res.json();
+      // console.log(data);
+      if (data) location.assign('/dashboard');
+
+    } catch (error) {
+      console.log(error);
+    }
+  });
+</script>
 
 <%- include('partials/footer'); -%>

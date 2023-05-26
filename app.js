@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes.js');
 const homeRoutes = require('./routes/homeRoutes.js');
 const dashboardRoutes = require('./routes/dashboardRoutes.js');
+const addnewRoutes = require('./routes/addnewRoutes.js');
 const { checkUser } = require('./middleware/authMiddleware.js');
 
 const mongoose = require('mongoose');
@@ -26,7 +27,7 @@ app.get('*', checkUser);
 app.use(authRoutes);
 app.use(homeRoutes);
 app.use(dashboardRoutes);
-
+app.use(addnewRoutes);
 
 // нужно менять input type из text в email на
 //  страницах вход/зарегистрироваться.

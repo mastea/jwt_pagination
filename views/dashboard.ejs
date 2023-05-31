@@ -10,24 +10,27 @@
       <tr>
         <td><%= blog.title %></td>
         <td>
-          <button class="btn btn-outline-primary btn-sm" id="edit<%= index %>">Изменить</button>
-          <button class="btn btn-outline-primary btn-sm" id="delete<%= index %>">Удалить</button>
+          <button class="btn btn-outline-primary btn-sm" id="edit<%= index %>" name="<%= blog.id %>">Изменить</button>
+          <button class="btn btn-outline-primary btn-sm" id="delete<%= index %>" name="<%= blog.id %>">Удалить</button>
         </td>
       </tr>
       <% }); %>
   </table>
-
+  
 <script>
-
   for (let i = 0; i < '<%- blogs.length %>'; i++) {
+
     const editBtn = document.getElementById(`edit${i}`);
     const deleteBtn = document.getElementById(`delete${i}`);
-    
-    editBtn.addEventListener("click", ()=>{
-      console.log('Edit ' + i);
+
+    editBtn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      window.open('/dashboard/edit/' + e.target.name, "_self");
     });
-    deleteBtn.addEventListener("click", ()=>{
-      console.log('Delete ' + i);
+    deleteBtn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      fetch('/dashboard/delete/' + e.target.name, { method: "delete" })
+        .then(window.location.reload());
     });   
   }
 </script>
